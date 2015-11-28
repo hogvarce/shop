@@ -2,7 +2,7 @@
 
 <div class="row">
     <div class="col-md-2">
-        <?= Html::img($item->thumb(120)) ?>
+        <?= Html::a(Html::img($item->thumb(120), ['alt' => $item->title]), ['shop/view', 'slug' => $item->slug]) ?>
     </div>
     <div class="col-md-10">
         <p><?= Html::a($item->title, ['shop/view', 'slug' => $item->slug]) ?></p>

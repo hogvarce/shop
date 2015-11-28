@@ -17,9 +17,9 @@ function renderNode($node){
         </li>';
     } else {
         $html = '<li>'.$node->title.'</li>';
-        $html .= '<ul>';
+        $html .= '<ul class="list-inline">';
         foreach($node->children as $child) $html .= renderNode($child);
-        $html .= '</ul>';
+        $html .= '</ul><hr>';
     }
     return $html;
 }
