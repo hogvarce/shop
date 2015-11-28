@@ -68,7 +68,7 @@ $goodsCount = count(Shopcart::goods());
             </div>
             <div class="col-md-6">
                 <?php if(Yii::$app->request->get(Subscribe::SENT_VAR)) : ?>
-                    You have successfully subscribed
+                    Ты успешно подписался
                 <?php else : ?>
                     <?= Subscribe::form() ?>
                 <?php endif; ?>
