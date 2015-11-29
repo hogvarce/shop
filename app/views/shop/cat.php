@@ -18,7 +18,7 @@ $this->params['breadcrumbs'][] = $cat->model->title;
                 <?= $this->render('_item', ['item' => $item]) ?>
             <?php endforeach; ?>
         <?php else : ?>
-            <p>Category is empty</p>
+            <p>Категория пуста</p>
         <?php endif; ?>
     </div>
     <div class="col-md-3 col-md-offset-1">

@@ -11,13 +11,13 @@ $this->params['breadcrumbs'][] = $page->model->title;
 
 function renderNode($node){
     if(!count($node->children)){
-        $html = '<li>
-            '.Html::a(Html::img($node->image, ['width' => '100', 'alt' => $node->title]), ['/shop/cat', 'slug' => $node->slug]).'
-            '.Html::a($node->title, ['/shop/cat', 'slug' => $node->slug]).'
+        $html = '<li class="col-xs-3">
+                '.Html::a(Html::img($node->image, ['width' => '100', 'alt' => $node->title]), ['/shop/cat', 'slug' => $node->slug]).'
+                '.Html::a($node->title, ['/shop/cat', 'slug' => $node->slug]).'
         </li>';
     } else {
-        $html = '<li>'.$node->title.'</li>';
-        $html .= '<ul class="list-inline">';
+        $html = '<li class="parent-category"><h4>'.$node->title.'</h4></li>';
+        $html .= '<ul class="list-inline clearfix">';
         foreach($node->children as $child) $html .= renderNode($child);
         $html .= '</ul><hr>';
     }
@@ -33,7 +33,7 @@ function renderNode($node){
             <a class="btn btn-success" href="<?= File::get('price-list')->file ?>"><i class="glyphicon glyphicon-save"></i> Скачать прайс-лист</a>
         </h1>
         <br/>
-        <ul class="list-inline">
+        <ul class="list-inline category-list">
             <?php foreach(Catalog::tree() as $node)
                 echo renderNode($node);
             ?>
