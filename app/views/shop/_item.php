@@ -6,17 +6,21 @@
     </div>
     <div class="col-md-10" itemscope itemtype="http://schema.org/Product">
         <p itemprop="name"><?= Html::a($item->title, ['shop/view', 'slug' => $item->slug]) ?></p>
-         <p>
-            <span class="text-muted">Марка:</span><span itemprop="brand"> <?= ($item->data->brand) ? $item->data->brand : ''?></span>
-         <br/>
-            <span class="text-muted" >Объем:</span><span itemprop="description "> <?= ($item->data->obiem) ? $item->data->obiem : ''?></span>
-         <br/>
-            <?php if(!empty($item->data->color) ) : ?>
-                <span class="text-muted">Цвета:</span><span itemprop="color"> <?= implode(', ', $item->data->color) ?></span>
+         <p itemprop="description">
+            <?php if ( isset($item->data->brand) ) : ?>
+                <span class="text-muted">Марка:</span><span itemprop="brand"> <?= ($item->data->brand) ? $item->data->brand : ''?></span>
+                <br/>
             <?php endif; ?>
-            <br/>
+            <?php if ( isset($item->data->obiem) ) : ?>
+                <span class="text-muted" >Объем:</span><span itemprop="description"> <?= ($item->data->obiem) ? $item->data->obiem : ''?>л</span>
+                <br/>
+            <?php endif; ?>
+            <?php if(  isset($item->data->color) && !empty($item->data->color) ) : ?>
+                <span class="text-muted">Цвета:</span><span itemprop="color"> <?= implode(', ', $item->data->color) ?></span>
+                <br/>
+            <?php endif; ?>
             <?php if( isset($item->data->features) && !empty($item->data->features) ) : ?>
-                <span class="text-muted">Дополнительно:</span> <?= implode(', ', $item->data->features) ?>
+                <span class="text-muted">Дополнительно:</span><?= implode(', ', $item->data->features) ?>
             <?php endif; ?>
         </p>
          <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">

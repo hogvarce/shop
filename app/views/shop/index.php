@@ -16,7 +16,7 @@ function renderNode($node){
                 '.Html::a($node->title, ['/shop/cat', 'slug' => $node->slug]).'
         </li>';
     } else {
-        $html = '<li class="parent-category"><h4>'.$node->title.'</h4></li>';
+        $html = '<li class="parent-category col-xs-12"><h4>'.$node->title.'</h4></li>';
         $html .= '<ul class="list-inline clearfix">';
         foreach($node->children as $child) $html .= renderNode($child);
         $html .= '</ul><hr>';

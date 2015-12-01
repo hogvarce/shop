@@ -13,11 +13,14 @@ class GadgetsFilterForm extends Model
     public $storageTo;
     public $color;
     public $touchscreen = false;
+    public $inpack;
+    public $valueFrom;
+    public $valueTo;
 
     public function rules()
     {
         return [
-            [['priceFrom', 'priceTo', 'storageFrom', 'storageTo'], 'number', 'min' => 0],
+            [['priceFrom', 'priceTo', 'storageFrom', 'storageTo', 'inpack', 'valueFrom', 'valueTo'], 'number', 'min' => 0],
             ['touchscreen', 'boolean'],
             [['brand', 'color'], 'string'],
         ];
@@ -26,13 +29,16 @@ class GadgetsFilterForm extends Model
     public function attributeLabels()
     {
         return [
-            'brand' => 'Brand',
+            'brand' => 'Марка',
             'priceFrom' => 'Цена от',
             'priceTo' => 'Цена до',
-            'storageFrom' => 'Storage from',
-            'storageTo' => 'Storage to',
+            'storageFrom' => 'Количество в упаковке от',
+            'storageTo' => 'Количество в упаковке до',
             'touchscreen' => 'Touchscreen',
             'color' => 'Цвет',
+            'inpack' => 'Количество в упаковке',
+            'valueFrom' => 'Объем от',
+            'valueTo' => 'Объем до',
         ];
     }
 
@@ -58,6 +64,14 @@ class GadgetsFilterForm extends Model
 
         if ($this->color) {
             $filters['color'] = $this->color;
+        }
+
+        if ($this->inpack) {
+            $filters['inpack'] = $this->inpack;
+        }
+
+        if ($this->valueFrom > 0 || $this->valueTo > 0) {
+            $filters['obiem'] = [$this->valueFrom, $this->valueTo];
         }
 
         return $filters;

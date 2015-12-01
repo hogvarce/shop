@@ -36,22 +36,34 @@ if(!empty($item->data->color) && is_array($item->data->color)) {
     </div>
     <div class="col-md-8">
         <div class="row">
-            <div class="col-md-8">
+            <div class="col-md-8" itemprop="description">
                 <h2 itemprop="offers" itemscope itemtype="http://schema.org/Offer">
-                    <span class="label label-warning" itemprop="price"><?= $item->price ?></span><span  class="label label-warning" itemprop="priceCurrency" content="RUB">&#8381;</span>
+                    <span class="label label-warning" itemprop="price"><?= $item->price ?></span><span itemprop="priceCurrency" content="RUB">&#8381;</span>
                     <?php if($item->discount) : ?>
                         <del class="small"><?= $item->oldPrice ?></del>
                     <?php endif; ?>
                 </h2>
                 <h3>Характеристики:</h3>
-                <span class="text-muted">Марка:</span><span itemprop="brand"> <?= $item->data->brand ?></span>
-                <br/>
-                <span class="text-muted">Объем:</span><span itemprop="description "> <?= $item->data->obiem ?></span>
-                <br/>
+                <?php if ( isset($item->data->brand) ) : ?>
+                    <span class="text-muted">Марка:</span><span itemprop="brand"> <?= $item->data->brand ?></span>
+                    <br/>
+                <?php endif; ?>
+                <?php if ( isset($item->data->article) ) : ?>
+                    <span class="text-muted">Артикул:</span><span><?= $item->data->article ?></span>
+                    <br/>
+                <?php endif; ?>
+                <?php if ( isset($item->data->obiem) ) : ?>
+                    <span class="text-muted">Объем:</span><span> <?= $item->data->obiem ?>л</span>
+                    <br/>
+                <?php endif; ?>
+                <?php if ( isset($item->data->inpack) ) : ?>
+                    <span class="text-muted">Количество в упаковке:</span><span> <?= $item->data->inpack ?></span>
+                    <br/>
+                <?php endif; ?>
                 <?php if(!empty($item->data->color) ) : ?>
                     <span class="text-muted">Цвета:</span><span itemprop="color"> <?= implode(', ', $item->data->color) ?></span>
+                    <br/>
                 <?php endif; ?>
-                <br/>
                 <span class="text-muted">В наличии:</span> <?= $item->available ? $item->available : 'Не ограничено' ?>
                 <?php if(!empty($item->data->features)) : ?>
                     <br/>

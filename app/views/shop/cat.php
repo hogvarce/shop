@@ -25,11 +25,14 @@ $this->params['breadcrumbs'][] = $cat->model->title;
         <h4>Фильтры</h4>
         <div class="well well-sm">
             <?php $form = ActiveForm::begin(['method' => 'get', 'action' => Url::to(['/shop/cat', 'slug' => $cat->slug])]); ?>
-                <!-- <?= $form->field($filterForm, 'brand')->dropDownList($cat->fieldOptions('brand', 'Select brand')) ?> -->
+                <!-- <?= $form->field($filterForm, 'brand')->dropDownList($cat->fieldOptions('brand', 'Производитель')) ?> -->
                 <?= $form->field($filterForm, 'priceFrom') ?>
                 <?= $form->field($filterForm, 'priceTo') ?>
                 <!-- <?= $form->field($filterForm, 'storageFrom') ?>
                 <?= $form->field($filterForm, 'storageTo') ?> -->
+                <?= $form->field($filterForm, 'inpack') ?>
+                <?= $form->field($filterForm, 'valueFrom') ?>
+                <?= $form->field($filterForm, 'valueTo') ?>
                 <?= $form->field($filterForm, 'color')->dropDownList($cat->fieldOptions('color', 'Выбрать цвет')) ?>
                 <?= Html::submitButton('Выбрать', ['class' => 'btn btn-primary']) ?>
             <?php ActiveForm::end(); ?>
