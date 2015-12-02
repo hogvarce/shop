@@ -8,11 +8,15 @@
         <p itemprop="name"><?= Html::a($item->title, ['shop/view', 'slug' => $item->slug]) ?></p>
          <p itemprop="description">
             <?php if ( isset($item->data->brand) ) : ?>
-                <span class="text-muted">Марка:</span><span itemprop="brand"> <?= ($item->data->brand) ? $item->data->brand : ''?></span>
+                <span class="text-muted">Марка:</span><span itemprop="brand"> <?=  $item->data->brand ?></span>
+                <br/>
+            <?php endif; ?>
+            <?php if ( isset($item->data->article) ) : ?>
+                <span class="text-muted">Артикул:</span><span itemprop="productID"> <?=  $item->data->article ?></span>
                 <br/>
             <?php endif; ?>
             <?php if ( isset($item->data->obiem) && $item->data->obiem > 0 ) : ?>
-                <span class="text-muted" >Объем:</span><span itemprop="depth"> <?= ($item->data->obiem) ? $item->data->obiem : ''?>л</span>
+                <span class="text-muted" >Объем:</span><span itemprop="depth"> <?= $item->data->obiem ?>л</span>
                 <br/>
             <?php endif; ?>
             <?php if(  isset($item->data->color) && !empty($item->data->color) ) : ?>
