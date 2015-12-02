@@ -16,13 +16,14 @@ class GadgetsFilterForm extends Model
     public $inpack;
     public $valueFrom;
     public $valueTo;
+    public $article;
 
     public function rules()
     {
         return [
             [['priceFrom', 'priceTo', 'storageFrom', 'storageTo', 'inpack', 'valueFrom', 'valueTo'], 'number', 'min' => 0],
             ['touchscreen', 'boolean'],
-            [['brand', 'color'], 'string'],
+            [['brand', 'color', 'article'], 'string'],
         ];
     }
 
@@ -39,6 +40,7 @@ class GadgetsFilterForm extends Model
             'inpack' => 'Количество в упаковке',
             'valueFrom' => 'Объем от',
             'valueTo' => 'Объем до',
+            'article' => 'Артикул',
         ];
     }
 
@@ -48,6 +50,10 @@ class GadgetsFilterForm extends Model
 
         if ($this->brand) {
             $filters['brand'] = $this->brand;
+        }
+
+        if ($this->article) {
+            $filters['article'] = $this->article;
         }
 
         if ($this->priceFrom > 0 || $this->priceTo > 0) {

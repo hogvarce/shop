@@ -52,7 +52,7 @@ if(!empty($item->data->color) && is_array($item->data->color)) {
                     <span class="text-muted">Артикул:</span><span><?= $item->data->article ?></span>
                     <br/>
                 <?php endif; ?>
-                <?php if ( isset($item->data->obiem) ) : ?>
+                <?php if ( isset($item->data->obiem) && $item->data->obiem > 0 ) : ?>
                     <span class="text-muted">Объем:</span><span> <?= $item->data->obiem ?>л</span>
                     <br/>
                 <?php endif; ?>

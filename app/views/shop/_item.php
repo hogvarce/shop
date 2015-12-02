@@ -11,8 +11,8 @@
                 <span class="text-muted">Марка:</span><span itemprop="brand"> <?= ($item->data->brand) ? $item->data->brand : ''?></span>
                 <br/>
             <?php endif; ?>
-            <?php if ( isset($item->data->obiem) ) : ?>
-                <span class="text-muted" >Объем:</span><span itemprop="description"> <?= ($item->data->obiem) ? $item->data->obiem : ''?>л</span>
+            <?php if ( isset($item->data->obiem) && $item->data->obiem > 0 ) : ?>
+                <span class="text-muted" >Объем:</span><span itemprop="depth"> <?= ($item->data->obiem) ? $item->data->obiem : ''?>л</span>
                 <br/>
             <?php endif; ?>
             <?php if(  isset($item->data->color) && !empty($item->data->color) ) : ?>

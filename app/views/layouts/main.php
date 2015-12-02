@@ -39,7 +39,7 @@ $goodsCount = count(Shopcart::goods());
                     <a href="<?= Url::to(['/shopcart']) ?>" class="btn btn-default navbar-btn navbar-right" title="Complete order">
                         <i class="glyphicon glyphicon-shopping-cart"></i>
                         <?php if($goodsCount > 0) : ?>
-                            <?= $goodsCount ?> <?= $goodsCount > 1 ? 'items' : 'item' ?> - <?= Shopcart::cost() ?>&#8381;
+                            <?= $goodsCount ?> <?= $goodsCount > 1 ? 'поз.' : 'поз.' ?> - <?= Shopcart::cost() ?>&#8381;
                         <?php else : ?>
                             <span class="text-muted">Пусто</span>
                         <?php endif; ?>

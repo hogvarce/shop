@@ -32,6 +32,7 @@ $this->params['breadcrumbs'][] = $cat->model->title;
             ?>
             <?php $form = ActiveForm::begin(['method' => 'get', 'action' => Url::to(['/shop/cat', 'slug' => $cat->slug])]); ?>
                 <!-- <?= $form->field($filterForm, 'brand')->dropDownList($cat->fieldOptions('brand', 'Производитель')) ?> -->
+                <?= (in_array('article', $arr)) ? $form->field($filterForm, 'article') : '' ?>
                 <?= $form->field($filterForm, 'priceFrom') ?>
                 <?= $form->field($filterForm, 'priceTo') ?>
                 <?= (in_array('inpack', $arr)) ? $form->field($filterForm, 'storageFrom') : '' ?>

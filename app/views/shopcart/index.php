@@ -21,9 +21,9 @@ $this->params['breadcrumbs'][] = $page->model->title;
                 <thead>
                 <tr>
                     <th>Item</th>
-                    <th width="100">Quantity</th>
-                    <th width="120">Unit Price</th>
-                    <th width="100">Total</th>
+                    <th width="100">Количество</th>
+                    <th width="120">Цена ед.</th>
+                    <th width="100">Всего</th>
                     <th width="30"></th>
                 </tr>
                 </thead>
@@ -47,16 +47,16 @@ $this->params['breadcrumbs'][] = $page->model->title;
                 <?php endforeach; ?>
                 <tr>
                     <td colspan="5" class="text-right">
-                        <h3>Total: <?= Shopcart::cost() ?>$</h3>
+                        <h3>Всего: <?= Shopcart::cost() ?>&#8381;</h3>
                     </td>
                 </tr>
                 </tbody>
             </table>
-            <?= Html::submitButton('<i class="glyphicon glyphicon-refresh"></i> Update', ['class' => 'btn btn-default pull-right']) ?>
+            <?= Html::submitButton('<i class="glyphicon glyphicon-refresh"></i> Обновить', ['class' => 'btn btn-default pull-right']) ?>
             <?= Html::endForm()?>
         </div>
         <div class="col-md-4 col-md-offset-2">
-            <h4>Checkout</h4>
+            <h4>Получатель</h4>
             <div class="well well">
                 <?= Shopcart::form(['successUrl' => Url::to('/shopcart/success')])?>
             </div>
