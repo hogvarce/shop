@@ -24,15 +24,20 @@ $this->params['breadcrumbs'][] = $cat->model->title;
     <div class="col-md-3 col-md-offset-1">
         <h4>Фильтры</h4>
         <div class="well well-sm">
+            <?php
+                $arr = [];
+                foreach ($cat->fields as $field) {
+                  array_push($arr, $field->name);
+                }
+            ?>
             <?php $form = ActiveForm::begin(['method' => 'get', 'action' => Url::to(['/shop/cat', 'slug' => $cat->slug])]); ?>
                 <!-- <?= $form->field($filterForm, 'brand')->dropDownList($cat->fieldOptions('brand', 'Производитель')) ?> -->
                 <?= $form->field($filterForm, 'priceFrom') ?>
                 <?= $form->field($filterForm, 'priceTo') ?>
-                <!-- <?= $form->field($filterForm, 'storageFrom') ?>
-                <?= $form->field($filterForm, 'storageTo') ?> -->
-                <?= $form->field($filterForm, 'inpack') ?>
-                <?= $form->field($filterForm, 'valueFrom') ?>
-                <?= $form->field($filterForm, 'valueTo') ?>
+                <?= (in_array('inpack', $arr)) ? $form->field($filterForm, 'storageFrom') : '' ?>
+                <?= (in_array('inpack', $arr)) ? $form->field($filterForm, 'storageTo') : '' ?>
+                <?= (in_array('obiem', $arr)) ? $form->field($filterForm, 'valueFrom') : '' ?>
+                <?= (in_array('obiem', $arr)) ? $form->field($filterForm, 'valueTo') : '' ?>
                 <?= $form->field($filterForm, 'color')->dropDownList($cat->fieldOptions('color', 'Выбрать цвет')) ?>
                 <?= Html::submitButton('Выбрать', ['class' => 'btn btn-primary']) ?>
             <?php ActiveForm::end(); ?>

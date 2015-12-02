@@ -55,7 +55,7 @@ class GadgetsFilterForm extends Model
         }
 
         if ($this->storageFrom > 0 || $this->storageTo > 0) {
-            $filters['storage'] = [$this->storageFrom, $this->storageTo];
+            $filters['inpack'] = [$this->storageFrom, $this->storageTo];
         }
 
         if ($this->touchscreen) {
@@ -64,10 +64,6 @@ class GadgetsFilterForm extends Model
 
         if ($this->color) {
             $filters['color'] = $this->color;
-        }
-
-        if ($this->inpack) {
-            $filters['inpack'] = $this->inpack;
         }
 
         if ($this->valueFrom > 0 || $this->valueTo > 0) {
