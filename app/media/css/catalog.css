@@ -1,3 +1,10 @@
+.category-list li {
+    height: 150px;
+}
+.category-list li.parent-category {
+    height: 50px;
+    border-top: 1px solid #f5f5f5;
+}
 .category-list a {
     display: block;
     text-align: center;
